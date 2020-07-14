@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Engine</title>
+    <meta charset="UTF-8" />
+    <link href="src/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-10">
+          <br />
+          <div class="search-engine">
+            <form class="search-form">
+              <div class="row">
+                <div class="col-8">
+                  <input
+                    type="search"
+                    id="city-input"
+                    placeholder="Enter your location..."
+                    class="form-control shadow-sm"
+                    autofocus="on"
+                    autocomplete="off"
+                  />
+                </div>
+                <div class="col-4">
+                  <input
+                    type="submit"
+                    value="Search"
+                    class="btn btn-light shadow-sm"
+                  />
+                </div>
+              </div>
+            </form>
+          </div>
+          <br />
+          <h1 class="current-city">
+            Prescott, Arizona
+          </h1>
+          <h2 class="date-day">
+            Thursday, 11 June 2020, 16:00
+          </h2>
+          <br />
+          <div class="row">
+            <div class="col-6">
+              <div class="row">
+                <div class="col-6">
+                  <span> <img class="sunny" src="media/sunny.png" /></span>
+                </div>
+                <div class="col-6">
+                  <div class="clearfix">
+                    <div style="floatleft">
+                      <span class="temperature">28</span>
+                      <span class="units"
+                        ><a href="#" id="celsius" class="degrees"> &degC</a> |
+                        <a href="#" id="fahrenheit" class="degrees">&degF</a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6">
+              <span class="weather-type">Mostly Sunny</span>
+              <ul>
+                <li id="feels-like">Feels Like: 28°C</li>
+                <li id="humidity">Humidity: 17%</li>
+                <li id="wind-speed">Wind: 14km/hr</li>
+                <li id="pressure">Pressure: 1018.4 mb</li>
+              </ul>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-3">
+              <span> <img class="sunrise" src="media/sunrise.png" /></span>
+            </div>
+            <div class="col-3">
+              <div class="clearfix">
+                <div style="floatleft">
+                  <p class="sunrise-time">
+                    <span class="state-sun">Sunrise:</span> <br />
+                    <span class="sr-time">5.17 AM</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-3">
+              <span> <img class="sunset" src="media/sunset.png" /></span>
+            </div>
+            <div class="col-3">
+              <p class="sunset-time">
+                <span class="state-sun">Sunset:</span> <br />
+                <span class="ss-time">7.45 PM</span>
+              </p>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-2">
+              <div class="card" style="width: 10rem;">
+                <img
+                  src="media/sunny-1.jpg"
+                  class="card-img-top"
+                  alt="sunshine on flowers"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Friday</h5>
+                  <p class="card-text">
+                    High: 31°C <br />
+                    Low: 14°C
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="card" style="width: 10rem;">
+                <img
+                  src="media/sunny-2.jpg"
+                  class="card-img-top"
+                  alt="sunny meadow"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Saturday</h5>
+                  <p class="card-text">
+                    High: 32°C <br />
+                    Low: 14°C
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="card" style="width: 10rem;">
+                <img
+                  src="media/sunny-3.jpg"
+                  class="card-img-top"
+                  alt="blue sky"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Sunday</h5>
+                  <p class="card-text">
+                    High: 33°C <br />
+                    Low: 15°C
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="card" style="width: 10rem;">
+                <img
+                  src="media/sunny-4.jpg"
+                  class="card-img-top"
+                  alt="sunshine on flower"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Monday</h5>
+                  <p class="card-text">
+                    High: 34°C <br />
+                    Low: 16°C
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="card" style="width: 10rem;">
+                <img
+                  src="media/sunny-5.jpg"
+                  class="card-img-top"
+                  alt="sunny lakeside"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Tuesday</h5>
+                  <p class="card-text">
+                    High: 34°C <br />
+                    Low: 16°C
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="card" style="width: 10rem;">
+                <img
+                  src="media/sunny-6.jpg"
+                  class="card-img-top"
+                  alt="palm trees"
+                />
+                <div class="card-body">
+                  <h5 class="card-title">Wednesday</h5>
+                  <p class="card-text">
+                    High: 33°C <br />
+                    Low: 16°C
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr />
+        </div>
+        <div class="col-2">
+          <br />
+          <h2 class="fav-city">
+            Favourites
+          </h2>
+          <br />
+          <div class="card" style="width: 12rem;">
+            <img
+              src="media/singapore.jpg"
+              class="card-img-top"
+              alt="singapore"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Singapore</h5>
+              <p class="card-text">
+                Mostly Cloudy <br />
+                High: 31°C <br />
+                Low: 27°C
+              </p>
+              <a href="#" class="btn btn-primary">Take me there</a>
+            </div>
+          </div>
+          <br />
+          <div class="card" style="width: 12rem;">
+            <img src="media/newyork.jpg" class="card-img-top" alt="new york" />
+            <div class="card-body">
+              <h5 class="card-title">New York</h5>
+              <p class="card-text">
+                Mostly Sunny <br />
+                High: 28°C <br />
+                Low: 20°C
+              </p>
+              <a href="#" class="btn btn-primary">Take me there</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="src/index.js"></script>
+</html>

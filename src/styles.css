@@ -1,0 +1,124 @@
+body {
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+  font-family: "Ubuntu", sans-serif;
+}
+
+h1 {
+  color: #111d5e;
+  font-weight: bold;
+  font-family: "Pacifico", cursive;
+  font-size: 58px;
+}
+
+.fav-city {
+  font-size: 30px;
+  color: #111d5e;
+  font-family: "Ubuntu", sans-serif;
+  text-decoration: underline;
+}
+
+h2 {
+  color: #204051;
+  font-size: 25px;
+}
+
+.sunny {
+  width: 200px;
+  border-radius: 15px;
+}
+
+.temperature {
+  font-size: 100px;
+  color: #111d5e;
+}
+
+.units {
+  font-size: 30px;
+  color: #111d5e;
+}
+
+ul {
+  margin: 20px;
+  padding: 0;
+  text-align: center;
+  color: #f37121;
+}
+
+li {
+  font-size: 25px;
+  font-weight: 20px;
+  line-height: 1.2;
+  list-style: none;
+}
+
+.weather-type {
+  text-transform: capitalize;
+  font-size: 60px;
+  font-family: "Pacifico", cursive;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  color: #ffbd69;
+}
+
+.sunrise {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.sunset {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}
+
+.sunrise-time {
+  font-size: 25px;
+  position: absolute;
+  left: 12%;
+  top: 25%;
+  color: #204051;
+}
+
+.sunset-time {
+  font-size: 25px;
+  position: absolute;
+  left: 15%;
+  top: 25%;
+  color: #204051;
+}
+
+.state-sun {
+  font-weight: bold;
+  font-size: 30px;
+  color: #c70039;
+  font-family: "Pacifico", cursive;
+}
+
+.card-title {
+  text-align: center;
+  font-weight: bold;
+  font-family: "Pacifico", cursive;
+}
+
+.card-text {
+  text-align: center;
+  font-size: 16px;
+}
+
+.card .btn {
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 10px 5px 10px 5px;
+}
+
+.search-engine input {
+  border: 1px solid #111d5e;
+  border-radius: 10px;
+}
+
+.card {
+  border: 1px solid #111d5e;
+}
