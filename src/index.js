@@ -63,9 +63,9 @@ function displayWeatherMetric(response) {
   document.querySelector(".temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-  document.querySelector(
-    "#feels-like"
-  ).innerHTML = `Feels Like: ${response.data.main.feels_like} °C`;
+  document.querySelector("#feels-like").innerHTML = `Feels Like: ${Math.round(
+    response.data.main.feels_like
+  )} °C`;
   document.querySelector(
     "#humidity"
   ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
@@ -76,7 +76,7 @@ function displayWeatherMetric(response) {
     "#pressure"
   ).innerHTML = `Pressure: ${response.data.main.pressure} mb`;
   document.querySelector(".weather-type").innerHTML =
-    response.data.weather[0].main;
+    response.data.weather[0].description;
 }
 
 function displayWeatherImperial(response) {
@@ -85,9 +85,9 @@ function displayWeatherImperial(response) {
   document.querySelector(".temperature").innerHTML = Math.round(
     response.data.main.temp
   );
-  document.querySelector(
-    "#feels-like"
-  ).innerHTML = `Feels Like: ${response.data.main.feels_like} °F`;
+  document.querySelector("#feels-like").innerHTML = `Feels Like: ${Math.round(
+    response.data.main.feels_like
+  )} °F`;
   document.querySelector(
     "#humidity"
   ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
@@ -98,7 +98,7 @@ function displayWeatherImperial(response) {
     "#pressure"
   ).innerHTML = `Pressure: ${response.data.main.pressure} mb`;
   document.querySelector(".weather-type").innerHTML =
-    response.data.weather[0].main;
+    response.data.weather[0].description;
 }
 
 function displaySun(response) {
