@@ -7,7 +7,7 @@ h1 {
   color: #111d5e;
   font-weight: bold;
   font-family: "Pacifico", cursive;
-  font-size: 58px;
+  font-size: 70px;
 }
 
 .fav-city {
@@ -19,7 +19,7 @@ h1 {
 
 h2 {
   color: #204051;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .sunny {
@@ -28,7 +28,7 @@ h2 {
 }
 
 .temperature {
-  font-size: 90px;
+  font-size: 70px;
   color: #111d5e;
 }
 
@@ -53,7 +53,7 @@ li {
 
 .weather-type {
   text-transform: capitalize;
-  font-size: 60px;
+  font-size: 55px;
   font-family: "Pacifico", cursive;
   display: block;
   margin: 0 auto;
@@ -91,7 +91,7 @@ li {
 
 .state-sun {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 35px;
   color: #c70039;
   font-family: "Pacifico", cursive;
 }
@@ -107,6 +107,16 @@ li {
   font-size: 16px;
 }
 
+.card-text-sg {
+  text-align: center;
+  font-size: 16px;
+}
+
+.card-text-ny {
+  text-align: center;
+  font-size: 16px;
+}
+
 .card .btn {
   display: block;
   margin: 0 auto;
@@ -117,6 +127,21 @@ li {
 .search-engine input {
   border: 1px solid #111d5e;
   border-radius: 10px;
+}
+
+.geolocation {
+  border: 1px solid #111d5e;
+  border-radius: 10px;
+  padding: 6px 10px 6px 10px;
+  position: relative;
+  left: -100px;
+  transition: all 200ms ease-in-out;
+}
+
+.geolocation:hover {
+  background-color: #e2e6ea;
+  color: black;
+  border-color: #dae0e5;
 }
 
 .card {
