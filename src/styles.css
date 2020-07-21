@@ -148,3 +148,10 @@ li {
 .card {
   border: 1px solid #111d5e;
 }
+
+.footnote {
+  text-align: center;
+  color: #111d5e;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 15px;
+}
