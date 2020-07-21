@@ -52,6 +52,8 @@ function searchCity(event) {
   findCityMetric(input.value);
   findCityImperial(input.value);
   findCitySun(input.value);
+  forecastMetric(input.value);
+  forecastImperial(input.value);
 }
 
 let form = document.querySelector(".search-form");
@@ -68,7 +70,7 @@ function displayWeatherMetric(response) {
   )} °C`;
   document.querySelector(
     "#humidity"
-  ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  ).innerHTML = `Humidity: ${response.data.main.humidity} %`;
   document.querySelector("#wind-speed").innerHTML = `Wind Speed: ${Math.round(
     response.data.wind.speed
   )} km/hr`;
@@ -90,7 +92,7 @@ function displayWeatherImperial(response) {
   )} °F`;
   document.querySelector(
     "#humidity"
-  ).innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  ).innerHTML = `Humidity: ${response.data.main.humidity} %`;
   document.querySelector("#wind-speed").innerHTML = `Wind Speed: ${Math.round(
     response.data.wind.speed
   )} mi/hr`;
@@ -124,6 +126,55 @@ function displaySun(response) {
   sunset.innerHTML = `${sunsetHour}:${sunsetMinute}`;
 }
 
+function formatHours(timestamp) {
+  let date = new Date(timestamp);
+  let hours = date.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hours}:${minutes}`;
+}
+
+function displayForecast(response) {
+  let forecastElement = document.querySelector["#forecast"];
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+    <div class="col-2">
+      <div class="card" style="width: 10rem;">
+        <img
+          src="http://openweathermap.org/img/wn/${
+            forecast.weather[0].icon
+          }@2x.png"
+          class="card-img-top"
+          alt="sunshine on flowers"
+        />
+        <div class="card-body forecast-details">
+          <h5 class="card-title">${formatHours(forecast.dt * 1000)}</h5>
+            <p class="card-text">
+              High: <span class="forecast-high">${Math.round(
+                forecast.main.temp_max
+              )}°</span> <br />
+              Low: <span class="forecast-low">${Math.round(
+                forecast.main.temp_min
+              )}°</span>
+            </p>
+        </div>
+      </div>
+    </div>
+    `;
+  }
+}
+
 function findCitySun(location) {
   let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
   let city = document.querySelector("#city-input").value;
@@ -135,18 +186,73 @@ function findCityMetric(location) {
   let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
   let city = document.querySelector("#city-input").value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayWeatherMetric, displaySun);
+  axios.get(apiUrl).then(displayWeatherMetric);
 }
 
 function findCityImperial(location) {
   let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
   let city = document.querySelector("#city-input").value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
-  axios.get(apiUrl).then(displayWeatherImperial, displaySun);
+  axios.get(apiUrl).then(displayWeatherImperial);
 }
 
+function forecastMetric(location) {
+  let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
+  let city = document.querySelector("#city-input").value;
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(forecastUrl).then(displayForecast);
+}
+
+function forecastImperial(location) {
+  let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
+  let city = document.querySelector("#city-input").value;
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
+  axios.get(forecastUrl).then(displayForecast);
+}
+
+function currentPositionMetric(position) {
+  console.log(position.coords.latitude);
+  console.log(position.coords.longitude);
+  let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayWeatherMetric);
+}
+
+function currentPositionImperial(position) {
+  console.log(position.coords.latitude);
+  console.log(position.coords.longitude);
+  let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+  axios.get(apiUrl).then(displayWeatherImperial);
+}
+
+function getCurrentPosition(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(
+    currentPositionMetric,
+    currentPositionImperial
+  );
+}
+
+let pin = document.querySelector(".geolocation");
+pin.addEventListener("click", getCurrentPosition);
+
 let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", findCityImperial);
+fahrenheit.addEventListener(
+  "click",
+  findCityImperial,
+  forecastImperial,
+  currentPositionImperial
+);
 
 let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", findCityMetric);
+celsius.addEventListener(
+  "click",
+  findCityMetric,
+  forecastMetric,
+  currentPositionMetric
+);
