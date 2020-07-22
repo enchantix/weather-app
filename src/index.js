@@ -154,7 +154,7 @@ function formatHours(timestamp) {
 }
 
 function displayForecast(response) {
-  let forecastElement = document.querySelector["#forecast"];
+  let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = null;
   let forecast = null;
 
@@ -168,7 +168,7 @@ function displayForecast(response) {
             forecast.weather[0].icon
           }@2x.png"
           class="card-img-top"
-          alt="sunshine on flowers"
+          alt="weather of the hour"
         />
         <div class="card-body forecast-details">
           <h5 class="card-title">${formatHours(forecast.dt * 1000)}</h5>
@@ -210,14 +210,14 @@ function findCityImperial(location) {
 
 function forecastMetric(location) {
   let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
-  let city = document.querySelector("#city-input").value;
+  let city = document.querySelector("h1").innerHTML;
   let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(forecastUrl).then(displayForecast);
 }
 
 function forecastImperial(location) {
   let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
-  let city = document.querySelector("#city-input").value;
+  let city = document.querySelector("h1").innerHTML;
   let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(forecastUrl).then(displayForecast);
 }
