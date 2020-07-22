@@ -209,8 +209,8 @@ function findCityImperial(location) {
 }
 
 function favCityMetric(location) {
-  document.querySelector("h1").innerHTML = document.getElementById(
-    "fav-city"
+  document.querySelector("h1").innerHTML = document.getElementsByClassName(
+    "favourite"
   ).value;
   let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
   let city = document.querySelector("h1").innerHTML;
