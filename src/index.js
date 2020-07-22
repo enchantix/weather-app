@@ -211,7 +211,7 @@ function findCityImperial(location) {
 function favCityMetric(location) {
   document.querySelector("h1").innerHTML = document.getElementsByClassName(
     "favourite"
-  ).value;
+  )[0].value;
   let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
   let city = document.querySelector("h1").innerHTML;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
