@@ -145,6 +145,27 @@ li {
   border: 1px solid #111d5e;
 }
 
+.favourite {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  top: 7px;
+  border-radius: 10px;
+  padding: 7px 10px 7px 10px;
+  font-size: 15px;
+  background-color: #0069d9;
+  color: white;
+  border: 1px solid black;
+  box-shadow: 1px 3px 3px rgba(17, 29, 94, 0.2);
+  transition: all 200ms ease-in-out;
+}
+
+.favourite:hover {
+  background-color: #e2e6ea;
+  color: black;
+  border-color: #dae0e5;
+}
+
 .footnote {
   text-align: center;
   color: #111d5e;
