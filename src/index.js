@@ -259,8 +259,6 @@ function currentPositionMetric(position) {
 }
 
 function currentPositionImperial(position) {
-  console.log(position.coords.latitude);
-  console.log(position.coords.longitude);
   let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
