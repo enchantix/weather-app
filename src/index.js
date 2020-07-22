@@ -49,11 +49,7 @@ function searchCity(event) {
   console.log(input.value);
   let newCity = document.querySelector("h1, .current-city");
   newCity.innerHTML = input.value;
-  findCityMetric(input.value);
-  findCityImperial(input.value);
-  findCitySun(input.value);
-  forecastMetric(input.value);
-  forecastImperial(input.value);
+  findCityMetric();
 }
 
 let form = document.querySelector(".search-form");
@@ -199,6 +195,7 @@ function findCityMetric(location) {
   let city = document.querySelector("h1").innerHTML;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherMetric);
+  forecastMetric();
 }
 
 function findCityImperial(location) {
@@ -206,6 +203,7 @@ function findCityImperial(location) {
   let city = document.querySelector("h1").innerHTML;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayWeatherImperial);
+  forecastImperial();
 }
 
 // function favCityMetric(location) {
@@ -237,6 +235,7 @@ function currentPositionMetric(position) {
   let lon = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(displayWeatherMetric);
+  forecastMetric();
 }
 
 function currentPositionImperial(position) {
@@ -247,6 +246,7 @@ function currentPositionImperial(position) {
   let lon = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
   axios.get(apiUrl).then(displayWeatherImperial);
+  forecastImperial();
 }
 
 function getCurrentPosition(event) {
@@ -255,6 +255,7 @@ function getCurrentPosition(event) {
     currentPositionMetric,
     currentPositionImperial
   );
+  currentPositionMetric();
 }
 
 let pin = document.querySelector(".geolocation");
