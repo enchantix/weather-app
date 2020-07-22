@@ -208,10 +208,22 @@ function findCityImperial(location) {
   findCitySun();
 }
 
-function favCityMetric(location) {
-  document.querySelector("h1").innerHTML = document.getElementsByClassName(
-    "favourite"
-  )[0].value;
+function favCityMetricSg(location) {
+  document.querySelector("h1").innerHTML = document.getElementById(
+    "fav-city-sg"
+  ).value;
+  let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
+  let city = document.querySelector("h1").innerHTML;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeatherMetric);
+  forecastMetric();
+  findCitySun();
+}
+
+function favCityMetricSea(location) {
+  document.querySelector("h1").innerHTML = document.getElementById(
+    "fav-city-sea"
+  ).value;
   let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
   let city = document.querySelector("h1").innerHTML;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
@@ -270,8 +282,11 @@ function getCurrentPosition(event) {
 let pin = document.querySelector(".geolocation");
 pin.addEventListener("click", getCurrentPosition);
 
-let favourite = document.querySelector(".favourite");
-favourite.addEventListener("click", favCityMetric);
+let favourite = document.querySelector("#fav-city-sg");
+favourite.addEventListener("click", favCityMetricSg);
+
+let favourite2 = document.querySelector("#fav-city-sea");
+favourite2.addEventListener("click", favCityMetricSea);
 
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", findCityImperial, forecastImperial);
