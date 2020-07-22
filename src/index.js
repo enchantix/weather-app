@@ -208,6 +208,13 @@ function findCityImperial(location) {
   axios.get(apiUrl).then(displayWeatherImperial);
 }
 
+// function favCityMetric(location) {
+// let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
+// let city = document.getElementById("#fav-city").value;
+// let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+// axios.get(apiUrl).then(displayWeatherMetric);
+// }
+
 function forecastMetric(location) {
   let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
   let city = document.querySelector("h1").innerHTML;
@@ -252,6 +259,9 @@ function getCurrentPosition(event) {
 
 let pin = document.querySelector(".geolocation");
 pin.addEventListener("click", getCurrentPosition);
+
+// let favourite = document.querySelector("#fav-city");
+// favourite.addEventListener("click", favCityMetric);
 
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", findCityImperial, forecastImperial);
