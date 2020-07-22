@@ -196,6 +196,7 @@ function findCityMetric(location) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeatherMetric);
   forecastMetric();
+  findCitySun();
 }
 
 function findCityImperial(location) {
@@ -204,14 +205,20 @@ function findCityImperial(location) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`;
   axios.get(apiUrl).then(displayWeatherImperial);
   forecastImperial();
+  findCitySun();
 }
 
-// function favCityMetric(location) {
-// let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
-// let city = document.getElementById("#fav-city").value;
-// let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-// axios.get(apiUrl).then(displayWeatherMetric);
-// }
+function favCityMetric(location) {
+  document.querySelector("h1").innerHTML = document.getElementById(
+    "fav-city"
+  ).value;
+  let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
+  let city = document.querySelector("h1").innerHTML;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayWeatherMetric);
+  forecastMetric();
+  findCitySun();
+}
 
 function forecastMetric(location) {
   let apiKey = "b10fbd6ef459c2258d75234428b8c26a";
@@ -236,6 +243,7 @@ function currentPositionMetric(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(displayWeatherMetric);
   forecastMetric();
+  findCitySun();
 }
 
 function currentPositionImperial(position) {
@@ -247,6 +255,7 @@ function currentPositionImperial(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
   axios.get(apiUrl).then(displayWeatherImperial);
   forecastImperial();
+  findCitySun();
 }
 
 function getCurrentPosition(event) {
@@ -261,8 +270,8 @@ function getCurrentPosition(event) {
 let pin = document.querySelector(".geolocation");
 pin.addEventListener("click", getCurrentPosition);
 
-// let favourite = document.querySelector("#fav-city");
-// favourite.addEventListener("click", favCityMetric);
+let favourite = document.querySelector(".favourite");
+favourite.addEventListener("click", favCityMetric);
 
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", findCityImperial, forecastImperial);
