@@ -131,6 +131,9 @@ function displaySun(response) {
   if (sunsetMinute < 10) {
     sunsetMinute = `0${sunsetMinute}`;
   }
+  if (sunsetHour < 10) {
+    sunsetHour = `0${sunsetHour}`;
+  }
   sunset.innerHTML = `${sunsetHour}:${sunsetMinute}`;
 }
 
@@ -254,8 +257,11 @@ function currentPositionMetric(position) {
   let lon = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   axios.get(apiUrl).then(displayWeatherMetric);
-  forecastMetric();
-  findCitySun();
+  //forecast
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  axios.get(forecastUrl).then(displayForecast);
+  //findCitySun
+  axios.get(apiUrl).then(displaySun);
 }
 
 function currentPositionImperial(position) {
@@ -264,8 +270,11 @@ function currentPositionImperial(position) {
   let lon = position.coords.longitude;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
   axios.get(apiUrl).then(displayWeatherImperial);
-  forecastImperial();
-  findCitySun();
+  //forecast
+  let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=imperial`;
+  axios.get(forecastUrl).then(displayForecast);
+  //findCitySun
+  axios.get(apiUrl).then(displaySun);
 }
 
 function getCurrentPosition(event) {
@@ -287,7 +296,17 @@ let favourite2 = document.querySelector("#fav-city-sea");
 favourite2.addEventListener("click", favCityMetricSea);
 
 let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", findCityImperial, forecastImperial);
+fahrenheit.addEventListener(
+  "click",
+  findCityImperial,
+  forecastImperial,
+  currentPositionImperial
+);
 
 let celsius = document.querySelector("#celsius");
-celsius.addEventListener("click", findCityMetric, forecastMetric);
+celsius.addEventListener(
+  "click",
+  findCityMetric,
+  forecastMetric,
+  currentPositionMetric
+);
